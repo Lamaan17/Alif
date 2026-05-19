@@ -40,6 +40,14 @@ export function Globe({
     window.addEventListener("resize", onResize);
     onResize();
 
+    // Re-measure once the next animation frame paints — guards against
+    // initial offsetWidth being 0 before layout has settled.
+    const raf = requestAnimationFrame(onResize);
+
+    // Also watch the canvas itself (font loads, container resizes, etc.).
+    const ro = new ResizeObserver(onResize);
+    ro.observe(canvasRef.current);
+
     // cobe v2 ships incomplete types — onRender is real but not declared.
     const globe = createGlobe(canvasRef.current, {
       devicePixelRatio: 2,
@@ -75,7 +83,9 @@ export function Globe({
 
     setReady(true);
     return () => {
+      cancelAnimationFrame(raf);
       window.removeEventListener("resize", onResize);
+      ro.disconnect();
       globe.destroy();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -107,7 +117,7 @@ export function Globe({
   return (
     <div
       className="relative mx-auto"
-      style={{ maxWidth: size, aspectRatio: "1" }}
+      style={{ width: "100%", maxWidth: size, aspectRatio: "1" }}
     >
       {/* Soft glow halo behind the globe */}
       <div
