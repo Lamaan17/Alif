@@ -33,7 +33,7 @@ export default async function Nav() {
     ? hasProfile
       ? "Open dashboard"
       : "Finish profile"
-    : "Create profile";
+    : "Join the Community";
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-paper-line/70 bg-paper/80 backdrop-blur supports-[backdrop-filter]:bg-paper/60">
@@ -50,11 +50,11 @@ export default async function Nav() {
           <a href="#sprints" className="transition-colors hover:text-ink">
             Sprints
           </a>
-          <a href="#trust" className="transition-colors hover:text-ink">
-            Trust
+          <a href="#journey" className="transition-colors hover:text-ink">
+            Journey
           </a>
-          <a href="#circles" className="transition-colors hover:text-ink">
-            Circles
+          <a href="/community" className="transition-colors hover:text-ink">
+            Community
           </a>
         </nav>
 

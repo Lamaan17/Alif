@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import Sprints from "@/components/Sprints";
+import BuilderJourney from "@/components/landing/BuilderJourney";
 import TrustLayer from "@/components/TrustLayer";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -14,7 +15,7 @@ export default async function Home() {
   try {
     tickerItems = await getTickerItems();
   } catch {
-    // Tolerate missing env / DB at landing — landing page still renders.
+    // tolerate missing env / DB at landing — landing still renders
   }
 
   return (
@@ -25,6 +26,7 @@ export default async function Home() {
       <Features />
       <HowItWorks />
       <Sprints />
+      <BuilderJourney />
       <TrustLayer />
       <CTA />
       <Footer />

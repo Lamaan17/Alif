@@ -67,12 +67,12 @@ export default function Sprints() {
             ))}
           </ul>
 
-          <div className="mt-8 flex gap-3">
-            <a href="/login" className="btn-accent">
-              Join the next sprint
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="/sprints" className="btn-primary">
+              Join Next Sprint
             </a>
-            <a href="#how" className="btn-secondary">
-              See past sprints
+            <a href="/projects" className="btn-secondary">
+              Explore Active Projects
             </a>
           </div>
         </div>

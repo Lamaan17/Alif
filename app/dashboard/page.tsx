@@ -25,8 +25,10 @@ import {
 } from "@/lib/profile-options";
 import { LevelPill } from "@/components/badges/LevelPill";
 import { BadgeRow } from "@/components/badges/BadgeChip";
+import { getActivityForProfile } from "@/lib/data/activity";
+import { ActivityFeed } from "@/components/profile/ActivityFeed";
 
-export const metadata = { title: "Dashboard — Build Together" };
+export const metadata = { title: "Dashboard — alif·build" };
 
 type ProofItem = { label?: string; url: string };
 type ProjectItem = { name: string; link?: string; description?: string };
@@ -53,6 +55,7 @@ export default async function DashboardPage() {
 
   const completion = computeCompletion(profile);
   const badges = await getBadgesForProfile(user.id);
+  const activity = await getActivityForProfile(user.id, 8);
 
   return (
     <main className="min-h-screen bg-paper-warm/40">
@@ -311,6 +314,17 @@ export default async function DashboardPage() {
                 ))}
               </div>
             )}
+          </section>
+
+          {/* Activity feed */}
+          <section className="rounded-xl2 border border-paper-line bg-paper p-6 shadow-card lg:col-span-3">
+            <SectionTitle>Activity</SectionTitle>
+            <p className="mt-1 text-[12px] text-ink-muted">
+              Sprints joined, projects shipped, badges earned, builders you&rsquo;ve connected with.
+            </p>
+            <div className="mt-4">
+              <ActivityFeed items={activity} />
+            </div>
           </section>
         </div>
       </div>

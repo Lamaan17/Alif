@@ -6,6 +6,7 @@ import {
   PackageCheck,
   HandHeart,
   Users,
+  Mountain,
   type LucideIcon,
 } from "lucide-react";
 import { badgeMeta, type BadgeTone } from "@/lib/profile-options";
@@ -14,6 +15,7 @@ import { cn } from "@/lib/utils";
 const ICONS: Record<string, LucideIcon> = {
   alif_verified: BadgeCheck,
   event_attendee: CalendarHeart,
+  summit_participant: Mountain,
   cohort_member: GraduationCap,
   sprint_finisher: Flag,
   shipped_project: PackageCheck,

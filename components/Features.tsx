@@ -3,6 +3,7 @@ import {
   Handshake,
   Rocket,
   ShieldCheck,
+  ArrowRight,
   type LucideIcon,
 } from "lucide-react";
 
@@ -16,30 +17,30 @@ type Feature = {
 const features: Feature[] = [
   {
     icon: UserRoundCog,
-    title: "Create founder profile",
+    title: "Create builder profile",
     body:
       "A signal-rich profile: what you've shipped, what you're great at, the kind of team you want to build, and the problem you can't stop thinking about.",
     tag: "Identity",
   },
   {
     icon: Handshake,
-    title: "Match with builders",
+    title: "Connect with builders",
     body:
-      "Discovery tuned for chemistry, not keywords. Filter by skill, stage, conviction, and time available — then introduce yourself with a clear ask.",
+      "Discovery tuned for collaboration fit, not keywords. Filter by skill, stage, conviction, and time available — then introduce yourself with a clear ask.",
     tag: "Discovery",
   },
   {
     icon: Rocket,
     title: "Join build sprints",
     body:
-      "7-day mini projects with light structure and a real deliverable. The fastest way to see if you actually want to start a company with someone.",
+      "7-day mini projects with light structure and a real deliverable. The fastest way to feel what working with someone is actually like.",
     tag: "Sprints",
   },
   {
     icon: ShieldCheck,
     title: "Enter verified circles",
     body:
-      "Earn trust signals through real work and unlock private founder circles — for deal flow, intros, and partners who already know how you ship.",
+      "Earn trust signals through real work and unlock private builder circles — for deal flow, intros, and partners who already know how you ship.",
     tag: "Circles",
   },
 ];
@@ -56,7 +57,7 @@ export default function Features() {
           Everything you need before the company exists.
         </h2>
         <p className="lead mt-4">
-          Cofounder formation is a process, not a coffee chat. Build Together
+          Builder formation is a process, not a coffee chat. Build Together
           gives that process structure.
         </p>
       </div>
@@ -80,6 +81,16 @@ export default function Features() {
             </p>
           </article>
         ))}
+      </div>
+
+      <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href="/login" className="btn-primary">
+          Join the Community
+          <ArrowRight className="h-4 w-4" />
+        </a>
+        <a href="/builders" className="btn-secondary">
+          Explore Builders
+        </a>
       </div>
     </section>
   );

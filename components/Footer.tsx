@@ -11,6 +11,9 @@ export default function Footer() {
         </div>
 
         <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-muted">
+          <a href="/community" className="transition-colors hover:text-ink">
+            Community
+          </a>
           <a href="/for-alif" className="transition-colors hover:text-ink">
             For ALIF
           </a>

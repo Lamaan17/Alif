@@ -18,7 +18,7 @@ import { Filters } from "./Filters";
 import { BuilderCard } from "@/components/builders/BuilderCard";
 import { TopMatches } from "@/components/builders/TopMatches";
 
-export const metadata = { title: "Find Builders — Build Together" };
+export const metadata = { title: "Builder Discovery — alif·build" };
 
 function parseFilters(sp: Record<string, string | undefined>): BuilderFilters {
   const csv = (v?: string) =>
@@ -109,10 +109,10 @@ export default async function BuildersPage({
           <div>
             <span className="eyebrow">
               <span className="eyebrow-dot" />
-              Find builders
+              Builder discovery
             </span>
             <h1 className="mt-3 font-display text-3xl tracking-tight sm:text-4xl">
-              Builders open to collaborate
+              People to build with
             </h1>
             <p className="lead mt-2 text-sm">
               {builders.length} {builders.length === 1 ? "builder" : "builders"} match your filters.

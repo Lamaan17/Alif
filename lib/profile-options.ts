@@ -82,13 +82,14 @@ export function levelLabel(level: number | null | undefined) {
 }
 
 export const BADGES = [
-  { value: "alif_verified",      label: "ALIF Verified",      tone: "moss" },
-  { value: "event_attendee",     label: "Event Attendee",     tone: "ink"  },
-  { value: "cohort_member",      label: "Cohort Member",      tone: "gold" },
-  { value: "sprint_finisher",    label: "Sprint Finisher",    tone: "moss" },
-  { value: "shipped_project",    label: "Shipped Project",    tone: "moss" },
-  { value: "mentor_endorsed",    label: "Mentor Endorsed",    tone: "gold" },
-  { value: "active_collaborator",label: "Active Collaborator",tone: "ink"  },
+  { value: "alif_verified",       label: "Verified Builder",   tone: "moss" },
+  { value: "event_attendee",      label: "ALIF Event Attendee",tone: "ink"  },
+  { value: "summit_participant",  label: "Summit Participant", tone: "gold" },
+  { value: "cohort_member",       label: "Cohort Member",      tone: "gold" },
+  { value: "sprint_finisher",     label: "Sprint Finisher",    tone: "moss" },
+  { value: "shipped_project",     label: "Shipped Project",    tone: "moss" },
+  { value: "mentor_endorsed",     label: "Mentor Endorsed",    tone: "gold" },
+  { value: "active_collaborator", label: "Active Builder",     tone: "ink"  },
 ] as const;
 
 export type BadgeKind = (typeof BADGES)[number]["value"];

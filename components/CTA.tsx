@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, UserPlus } from "lucide-react";
 
 export default function CTA() {
   return (
@@ -13,20 +13,21 @@ export default function CTA() {
             className="mt-6 font-display font-semibold text-4xl leading-[1.02] sm:text-5xl md:text-[72px]"
             style={{ letterSpacing: "-0.04em" }}
           >
-            Start building with people who actually build.
+            Build with people who actually build.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base text-ink-muted sm:text-lg">
-            Skip the LinkedIn theater. Join a small, trusted group of ALIF
-            members forming real teams through real work.
+            A high-trust ecosystem of ambitious ALIF builders shipping in
+            public. Earn your way in.
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a href="/login" className="btn-primary">
-              Create profile
+              Join the Community
               <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#sprints" className="btn-secondary">
-              Join a sprint
+            <a href="/login" className="btn-secondary">
+              <UserPlus className="h-4 w-4" />
+              Create Builder Profile
             </a>
           </div>
 

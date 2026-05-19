@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, UserPlus } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -13,7 +13,7 @@ export default function Hero() {
         <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
-            Founder formation · invite-only
+            High-trust builder ecosystem · invite-earned
           </span>
 
           <h1
@@ -26,23 +26,31 @@ export default function Hero() {
           </h1>
 
           <p className="mt-8 max-w-2xl text-lg text-ink-muted sm:text-xl">
-            Join trusted builders, test founder chemistry through mini projects,
-            and form startup teams inside the ALIF ecosystem.
+            A high-trust ecosystem for ambitious builders to collaborate on
+            projects, join build sprints, and unlock deeper community access
+            through real participation.
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
             <a href="/login" className="btn-primary">
-              Create profile
+              Join the Community
               <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#sprints" className="btn-secondary">
+            <a href="/sprints" className="btn-secondary">
               <Sparkles className="h-4 w-4" />
-              Join a sprint
+              Join a Sprint
+            </a>
+            <a
+              href="/login"
+              className="inline-flex items-center gap-2 text-sm font-medium text-ink-muted underline underline-offset-4 decoration-paper-line transition-colors hover:text-ink hover:decoration-ink/40"
+            >
+              <UserPlus className="h-3.5 w-3.5" />
+              Create builder profile
             </a>
           </div>
 
           <p className="mt-8 text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-            Free for ALIF members · no resumes, no cold DMs, no noise
+            Not a chatroom. A structured layer for builders who actually ship.
           </p>
         </div>
 
@@ -56,7 +64,7 @@ function SocialProof() {
   const stats = [
     { value: "1,400+", label: "Verified builders" },
     { value: "86", label: "Active sprints" },
-    { value: "212", label: "Cofounder matches" },
+    { value: "212", label: "Builder connections" },
     { value: "39", label: "Verified circles" },
   ];
   return (

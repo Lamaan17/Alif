@@ -32,6 +32,8 @@ import {
 import { ProfileActions } from "@/components/builders/ProfileActions";
 import { LevelPill } from "@/components/badges/LevelPill";
 import { BadgeRow } from "@/components/badges/BadgeChip";
+import { ActivityFeed } from "@/components/profile/ActivityFeed";
+import { getActivityForProfile } from "@/lib/data/activity";
 
 export default async function PublicBuilderPage({
   params,
@@ -50,10 +52,11 @@ export default async function PublicBuilderPage({
   const builder = await getBuilder(params.id);
   if (!builder) notFound();
 
-  const [interestsSet, matchesSet, badges] = await Promise.all([
+  const [interestsSet, matchesSet, badges, activity] = await Promise.all([
     getMyInterestsSet(user.id),
     getMyMatchesSet(user.id),
     getBadgesForProfile(builder.id),
+    getActivityForProfile(builder.id, 6),
   ]);
   const isInterested = interestsSet.has(builder.id);
   const isMatched = matchesSet.has(builder.id);
@@ -310,6 +313,17 @@ export default async function PublicBuilderPage({
                 ))}
               </div>
             )}
+          </section>
+
+          {/* Activity */}
+          <section className="rounded-xl2 border border-paper-line bg-paper p-6 shadow-card lg:col-span-3">
+            <SectionTitle>Contribution timeline</SectionTitle>
+            <p className="mt-1 text-[12px] text-ink-muted">
+              What this builder has done across the ecosystem.
+            </p>
+            <div className="mt-4">
+              <ActivityFeed items={activity} />
+            </div>
           </section>
         </div>
       </div>

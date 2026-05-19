@@ -4,6 +4,10 @@ import {
   CalendarHeart,
   HandHeart,
   PackageCheck,
+  Mountain,
+  Users,
+  GraduationCap,
+  ArrowRight,
   type LucideIcon,
 } from "lucide-react";
 
@@ -17,9 +21,27 @@ type Badge = {
 const badges: Badge[] = [
   {
     icon: BadgeCheck,
-    label: "ALIF Verified",
-    body: "Identity confirmed and member in good standing.",
+    label: "Verified Builder",
+    body: "Identity confirmed and active in the ALIF ecosystem.",
     tone: "moss",
+  },
+  {
+    icon: CalendarHeart,
+    label: "ALIF Event Attendee",
+    body: "Showed up in person at ALIF events and gatherings.",
+    tone: "ink",
+  },
+  {
+    icon: Mountain,
+    label: "Summit Participant",
+    body: "Participated in the annual ALIF Summit cohort.",
+    tone: "gold",
+  },
+  {
+    icon: GraduationCap,
+    label: "Cohort Member",
+    body: "Completed a structured ALIF cohort or program.",
+    tone: "gold",
   },
   {
     icon: Flag,
@@ -28,10 +50,10 @@ const badges: Badge[] = [
     tone: "moss",
   },
   {
-    icon: CalendarHeart,
-    label: "Event Attendee",
-    body: "Showed up in person at ALIF events and gatherings.",
-    tone: "ink",
+    icon: PackageCheck,
+    label: "Shipped Project",
+    body: "Has a public, working project visible from the profile.",
+    tone: "moss",
   },
   {
     icon: HandHeart,
@@ -40,10 +62,10 @@ const badges: Badge[] = [
     tone: "gold",
   },
   {
-    icon: PackageCheck,
-    label: "Shipped Project",
-    body: "Has a public, working project visible from the profile.",
-    tone: "moss",
+    icon: Users,
+    label: "Active Builder",
+    body: "Collaborating, contributing, and showing up week after week.",
+    tone: "ink",
   },
 ];
 
@@ -70,11 +92,11 @@ export default function TrustLayer() {
           </h2>
           <p className="lead mt-4">
             Trust signals replace cold credentials. Every badge points to a
-            real action someone took, not a claim they made.
+            real action a builder took, not a claim they made.
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {badges.map(({ icon: Icon, label, body, tone }) => (
             <div
               key={label}
@@ -96,6 +118,16 @@ export default function TrustLayer() {
         </div>
 
         <ProfilePreview />
+
+        <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href="/community" className="btn-primary">
+            Unlock Verified Community
+            <ArrowRight className="h-4 w-4" />
+          </a>
+          <a href="#journey" className="btn-secondary">
+            View Builder Journey
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -106,8 +138,8 @@ function ProfilePreview() {
     <div className="mx-auto mt-14 max-w-3xl rounded-xl2 border border-paper-line bg-paper p-6 shadow-card sm:p-7">
       <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
         <div className="flex items-center gap-4">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-ink text-paper">
-            <span className="font-display text-lg">YA</span>
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-ink text-paper-deep">
+            <span className="font-display text-lg font-semibold">YA</span>
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -117,13 +149,13 @@ function ProfilePreview() {
               <BadgeCheck className="h-4 w-4 text-moss-600" />
             </div>
             <div className="text-sm text-ink-muted">
-              Full-stack · Toronto · open to cofounding
+              Full-stack · Toronto · open to building together
             </div>
           </div>
         </div>
         <div className="flex flex-wrap gap-1.5 sm:ml-auto">
           <span className="badge">
-            <BadgeCheck className="h-3 w-3 text-moss-600" /> ALIF Verified
+            <BadgeCheck className="h-3 w-3 text-moss-600" /> Verified Builder
           </span>
           <span className="badge">
             <Flag className="h-3 w-3 text-moss-600" /> 3× Sprint Finisher

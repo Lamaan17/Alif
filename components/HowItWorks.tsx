@@ -13,7 +13,7 @@ const steps: Step[] = [
   },
   {
     n: "02",
-    title: "Match or apply to collaborate",
+    title: "Connect or apply to collaborate",
     body:
       "Browse builders by craft and conviction. Send a clear ask, or apply to projects others have posted.",
   },
@@ -27,7 +27,7 @@ const steps: Step[] = [
     n: "04",
     title: "Earn trust signals, unlock circles",
     body:
-      "Finish sprints, get endorsed, and graduate into verified founder circles with private intros and deal flow.",
+      "Finish sprints, get endorsed, and graduate into verified builder circles with private intros and deal flow.",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function HowItWorks() {
             How it works
           </span>
           <h2 className="mt-5 h-section">
-            From profile to verified founder — in four steps.
+            From profile to verified builder — in four steps.
           </h2>
         </div>
 
