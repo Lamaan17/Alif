@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-paper-deep text-ink font-sans;
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    background-color: rgba(122, 181, 143, 0.30);
+  }
+  hr {
+    @apply border-paper-line;
+  }
+}
+
+@layer components {
+  .container-prose {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-paper-line bg-paper-warm px-3 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-ink-soft;
+  }
+  .eyebrow-dot {
+    @apply h-1.5 w-1.5 rounded-full bg-ink;
+  }
+  .rule {
+    @apply h-px w-full bg-paper-line;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-150 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-offset-2 focus-visible:ring-offset-paper-deep;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-paper-deep hover:bg-ink-soft active:translate-y-px;
+  }
+  .btn-secondary {
+    @apply btn border border-paper-line bg-paper text-ink hover:border-ink/30 hover:bg-paper-warm active:translate-y-px;
+  }
+  .btn-accent {
+    @apply btn bg-moss-500 text-paper-deep hover:bg-moss-600 active:translate-y-px;
+  }
+  .card {
+    @apply rounded-xl2 border border-paper-line bg-paper p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-cardHover hover:border-ink/15;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-paper-line bg-paper-warm px-3 py-1 text-xs font-medium text-ink-soft;
+  }
+  .h-section {
+    @apply font-display font-semibold text-4xl text-ink sm:text-5xl md:text-[3.5rem] md:leading-[1.02];
+    letter-spacing: -0.035em;
+  }
+  .lead {
+    @apply text-base text-ink-muted sm:text-lg;
+  }
+  .wordmark {
+    @apply font-display text-lg font-semibold tracking-tight text-ink;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Ticker bar — continuous horizontal scroll */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.ticker-track {
+  width: max-content;
+  animation: ticker 60s linear infinite;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+}
+
