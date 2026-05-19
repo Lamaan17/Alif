@@ -9,6 +9,8 @@ import {
   CircleDot,
   Shield,
   Globe,
+  MapPin,
+  Activity,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { TickerBar } from "@/components/TickerBar";
@@ -69,6 +71,12 @@ export async function AppHeader({ email }: { email?: string | null }) {
           </NavLink>
           <NavLink href="/community" icon={Globe}>
             Community
+          </NavLink>
+          <NavLink href="/map" icon={MapPin}>
+            Map
+          </NavLink>
+          <NavLink href="/pulse" icon={Activity}>
+            Pulse
           </NavLink>
           {level >= 3 && (
             <NavLink href="/circle" icon={CircleDot}>

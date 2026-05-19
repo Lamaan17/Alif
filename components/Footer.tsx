@@ -14,6 +14,12 @@ export default function Footer() {
           <a href="/community" className="transition-colors hover:text-ink">
             Community
           </a>
+          <a href="/map" className="transition-colors hover:text-ink">
+            Map
+          </a>
+          <a href="/pulse" className="transition-colors hover:text-ink">
+            Pulse
+          </a>
           <a href="/for-alif" className="transition-colors hover:text-ink">
             For ALIF
           </a>
