@@ -2,22 +2,20 @@
 
 import { useState } from "react";
 import type { CityData } from "@/lib/data/network";
-import { cn } from "@/lib/utils";
+import { Globe, type GlobeMarker } from "./Globe";
 import { CityPanel } from "./CityPanel";
+import { cn } from "@/lib/utils";
 
-type Connection = readonly [string, string];
-
-const CONNECTIONS: Connection[] = [
-  ["sf", "austin"],
-  ["sf", "nyc"],
-  ["austin", "nyc"],
-  ["nyc", "toronto"],
-  ["nyc", "london"],
-  ["toronto", "london"],
-  ["london", "dubai"],
-  ["dubai", "karachi"],
-  ["london", "karachi"],
-];
+/** Real geographic coordinates for each city in the network. */
+const CITY_COORDS: Record<string, { lat: number; lng: number }> = {
+  sf: { lat: 37.7595, lng: -122.4367 },
+  austin: { lat: 30.2672, lng: -97.7431 },
+  nyc: { lat: 40.7128, lng: -74.006 },
+  toronto: { lat: 43.6532, lng: -79.3832 },
+  london: { lat: 51.5074, lng: -0.1278 },
+  dubai: { lat: 25.2048, lng: 55.2708 },
+  karachi: { lat: 24.8607, lng: 67.0011 },
+};
 
 export function CityMap({
   cities,
@@ -26,168 +24,99 @@ export function CityMap({
   cities: CityData[];
   compact?: boolean;
 }) {
-  const [selectedCity, setSelectedCity] = useState<CityData | null>(null);
+  const [selected, setSelected] = useState<CityData | null>(null);
 
-  const byId = new Map(cities.map((c) => [c.id, c]));
+  const markers: GlobeMarker[] = cities
+    .map((c) => {
+      const coord = CITY_COORDS[c.id];
+      if (!coord) return null;
+      return {
+        id: c.id,
+        name: c.name,
+        lat: coord.lat,
+        lng: coord.lng,
+        size: c.isHub ? 0.085 : 0.055,
+      };
+    })
+    .filter(Boolean) as GlobeMarker[];
 
   return (
     <div className="relative">
-      <div className="relative overflow-hidden rounded-xl2 border border-paper-line bg-paper">
-        {/* Faint dotted backdrop */}
+      <div className="relative overflow-hidden rounded-xl2 border border-paper-line bg-paper-deep">
         <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-grid-faint [background-size:24px_24px] opacity-30"
-        />
-        {/* Radial glow */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(circle at 50% 60%, rgba(122,181,143,0.10), transparent 55%)",
-          }}
-        />
-
-        <svg
-          viewBox="0 0 800 400"
           className={cn(
-            "relative block w-full",
-            compact ? "h-[280px] sm:h-[360px]" : "h-[400px] sm:h-[520px]",
+            "flex items-center justify-center px-6 py-8",
+            compact
+              ? "min-h-[360px] sm:min-h-[440px]"
+              : "min-h-[480px] sm:min-h-[640px]",
           )}
-          role="img"
-          aria-label="ALIF builder network map"
         >
-          <defs>
-            <linearGradient id="conn-grad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-              <stop offset="50%" stopColor="rgba(122,181,143,0.50)" />
-              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-            </linearGradient>
-            <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="rgba(122,181,143,0.7)" />
-              <stop offset="60%" stopColor="rgba(122,181,143,0.15)" />
-              <stop offset="100%" stopColor="rgba(122,181,143,0)" />
-            </radialGradient>
-          </defs>
+          <Globe markers={markers} size={compact ? 420 : 600} />
+        </div>
 
-          {/* Connecting lines */}
-          {CONNECTIONS.map(([a, b], i) => {
-            const A = byId.get(a);
-            const B = byId.get(b);
-            if (!A || !B) return null;
-            // curve control point — pull the midpoint slightly toward the top
-            const cx = (A.x + B.x) / 2;
-            const cy = (A.y + B.y) / 2 - Math.abs(A.x - B.x) * 0.12;
-            return (
-              <path
-                key={i}
-                d={`M ${A.x} ${A.y} Q ${cx} ${cy} ${B.x} ${B.y}`}
-                fill="none"
-                stroke="url(#conn-grad)"
-                strokeWidth={1}
-                strokeLinecap="round"
-                className="connection"
-                style={{ animationDelay: `${i * 0.4}s` }}
-              />
-            );
-          })}
-
-          {/* City nodes */}
-          {cities.map((c, i) => {
-            const baseR = c.isHub ? 5.5 : 4;
-            const glowR = c.isHub ? 28 : 22;
-            return (
-              <g
-                key={c.id}
-                onClick={() => setSelectedCity(c)}
-                className="cursor-pointer"
-              >
-                {/* outer glow */}
-                <circle
-                  cx={c.x}
-                  cy={c.y}
-                  r={glowR}
-                  fill="url(#node-glow)"
-                  className="city-glow"
-                  style={{ animationDelay: `${i * 0.25}s` }}
-                />
-                {/* core dot */}
-                <circle
-                  cx={c.x}
-                  cy={c.y}
-                  r={baseR}
-                  fill="#FFFFFF"
-                  className="transition-transform hover:scale-125"
-                  style={{ transformOrigin: `${c.x}px ${c.y}px` }}
-                />
-                {/* label */}
-                <text
-                  x={c.x}
-                  y={c.y - (c.isHub ? 14 : 11)}
-                  textAnchor="middle"
-                  className="fill-ink-soft text-[9px] font-medium uppercase tracking-[0.14em]"
-                  style={{ pointerEvents: "none" }}
-                >
-                  {c.name}
-                </text>
-                <text
-                  x={c.x}
-                  y={c.y + (c.isHub ? 18 : 15)}
-                  textAnchor="middle"
-                  className="fill-ink-muted text-[9px]"
-                  style={{ pointerEvents: "none" }}
-                >
-                  {c.builderCount} builders
-                </text>
-              </g>
-            );
-          })}
-        </svg>
-
-        {compact && (
-          <div className="pointer-events-none absolute bottom-0 left-0 right-0 flex items-center justify-between gap-3 border-t border-paper-line bg-paper-warm/60 px-4 py-2.5 backdrop-blur">
-            <span className="text-[11px] uppercase tracking-[0.16em] text-ink-muted">
+        <div className="relative border-t border-paper-line bg-paper-warm/40 backdrop-blur">
+          <div className="flex items-center justify-between gap-3 px-4 pt-3">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-ink-muted">
               Click any city
             </span>
-            <span className="text-[11px] uppercase tracking-[0.16em] text-ink-muted">
-              {cities.length} active cities
+            <span className="text-[10px] uppercase tracking-[0.18em] text-ink-muted">
+              {cities.length} active · drag globe to rotate
             </span>
           </div>
-        )}
+          <div
+            className="flex gap-2 overflow-x-auto px-4 pb-3 pt-2"
+            style={{ scrollbarWidth: "thin" }}
+          >
+            {cities
+              .slice()
+              .sort((a, b) => b.builderCount - a.builderCount)
+              .map((c) => (
+                <CityChip
+                  key={c.id}
+                  city={c}
+                  onClick={() => setSelected(c)}
+                />
+              ))}
+          </div>
+        </div>
       </div>
 
-      <CityPanel
-        city={selectedCity}
-        onClose={() => setSelectedCity(null)}
-      />
-
-      <style jsx>{`
-        @keyframes cityPulse {
-          0%, 100% {
-            opacity: 0.35;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 0.85;
-            transform: scale(1.18);
-          }
-        }
-        @keyframes connFlow {
-          0%, 100% { opacity: 0.25; }
-          50% { opacity: 0.75; }
-        }
-        .city-glow {
-          transform-origin: var(--cx) var(--cy);
-          transform-box: fill-box;
-          animation: cityPulse 4s ease-in-out infinite;
-        }
-        .connection {
-          animation: connFlow 6s ease-in-out infinite;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .city-glow, .connection { animation: none; }
-        }
-      `}</style>
+      <CityPanel city={selected} onClose={() => setSelected(null)} />
     </div>
+  );
+}
+
+function CityChip({
+  city,
+  onClick,
+}: {
+  city: CityData;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "group inline-flex shrink-0 items-center gap-2 rounded-full border px-3 py-1.5 text-[12px] transition-colors",
+        city.isHub
+          ? "border-moss-500/40 bg-moss-50 text-ink hover:border-moss-500/70"
+          : "border-paper-line bg-paper text-ink-soft hover:border-ink/20 hover:bg-paper-warm hover:text-ink",
+      )}
+    >
+      <span className="relative inline-flex h-1.5 w-1.5">
+        <span
+          className="absolute inset-0 animate-ping rounded-full bg-moss-500/40"
+          style={{ animationDuration: `${(2 + city.pulse * 3).toFixed(2)}s` }}
+        />
+        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-moss-500" />
+      </span>
+      <span className="font-medium">{city.name}</span>
+      <span className="text-ink-muted">·</span>
+      <span className="tabular-nums font-medium">{city.builderCount}</span>
+      <span className="text-[10px] uppercase tracking-[0.14em] text-ink-muted">
+        builders
+      </span>
+    </button>
   );
 }
