@@ -1,7 +1,7 @@
 import LoginForm from "./LoginForm";
 import Link from "next/link";
 
-export const metadata = { title: "Sign in — Build Together by ALIF" };
+export const metadata = { title: "Sign in — alif·build" };
 
 export default function LoginPage({
   searchParams,
@@ -29,11 +29,12 @@ export default function LoginPage({
                 <span className="eyebrow-dot" />
                 Members only
               </span>
-              <h1 className="mt-5 font-display text-3xl tracking-tight sm:text-4xl">
-                Sign in to Build Together
+              <h1 className="mt-5 font-display font-semibold text-3xl tracking-tight sm:text-4xl"
+                  style={{ letterSpacing: "-0.03em" }}>
+                Sign in or create an account
               </h1>
               <p className="lead mt-3 text-sm">
-                We&rsquo;ll email you a magic link. No password to remember.
+                Email + password. That&rsquo;s it.
               </p>
             </div>
 
