@@ -7,6 +7,12 @@ import {
   HandHeart,
   Users,
   Mountain,
+  MessageCircle,
+  Network,
+  Building2,
+  Moon,
+  Swords,
+  Briefcase,
   type LucideIcon,
 } from "lucide-react";
 import { badgeMeta, type BadgeTone } from "@/lib/profile-options";
@@ -15,12 +21,19 @@ import { cn } from "@/lib/utils";
 const ICONS: Record<string, LucideIcon> = {
   alif_verified: BadgeCheck,
   event_attendee: CalendarHeart,
-  summit_participant: Mountain,
   cohort_member: GraduationCap,
   sprint_finisher: Flag,
   shipped_project: PackageCheck,
   mentor_endorsed: HandHeart,
   active_collaborator: Users,
+  // ALIF Passport
+  sessions_participant: MessageCircle,
+  network_member: Network,
+  hq_visitor: Building2,
+  jumuah_attendee: Moon,
+  summit_participant: Mountain,
+  tournament_builder: Swords,
+  portfolio_contributor: Briefcase,
 };
 
 const TONES: Record<BadgeTone, string> = {

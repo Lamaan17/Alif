@@ -176,9 +176,15 @@ function humanBadge(kind: string): string {
     summit_participant: "Summit Participant",
     cohort_member: "Cohort Member",
     sprint_finisher: "Sprint Finisher",
-    shipped_project: "Shipped Project",
+    shipped_project: "Project Shipped",
     mentor_endorsed: "Mentor Endorsed",
     active_collaborator: "Active Builder",
+    sessions_participant: "Sessions Participant",
+    network_member: "Network Member",
+    hq_visitor: "HQ Visitor",
+    jumuah_attendee: "Jumuah Attendee",
+    tournament_builder: "Tournament Builder",
+    portfolio_contributor: "Portfolio Contributor",
   };
   return labels[kind] ?? kind;
 }

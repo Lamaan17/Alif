@@ -51,14 +51,15 @@ export default function Features() {
       <div className="mx-auto max-w-2xl text-center">
         <span className="eyebrow">
           <span className="eyebrow-dot" />
-          What you get
+          What lives here
         </span>
         <h2 className="mt-5 h-section">
-          Everything you need before the company exists.
+          The missing layer after the first spark.
         </h2>
         <p className="lead mt-4">
-          Builder formation is a process, not a coffee chat. Build Together
-          gives that process structure.
+          Momentum needs somewhere to go. Build Together is where ALIF builders
+          keep finding people, projects, and proof of work — after the room
+          ends.
         </p>
       </div>
 

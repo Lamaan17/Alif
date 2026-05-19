@@ -58,13 +58,13 @@ export async function AppHeader({ email }: { email?: string | null }) {
 
         <nav className="flex items-center gap-0.5 text-sm">
           <NavLink href="/dashboard" icon={LayoutDashboard}>
-            Dashboard
+            Passport
           </NavLink>
           <NavLink href="/builders" icon={Users}>
-            Builders
+            People
           </NavLink>
           <NavLink href="/projects" icon={Lightbulb}>
-            Projects
+            Things to Build
           </NavLink>
           <NavLink href="/sprints" icon={Sparkles}>
             Sprints

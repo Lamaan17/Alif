@@ -52,16 +52,15 @@ function Hero() {
             className="mt-8 font-display font-semibold text-5xl leading-[1.0] sm:text-6xl md:text-[88px]"
             style={{ letterSpacing: "-0.045em" }}
           >
-            Turn the community into a{" "}
-            <em className="italic font-medium text-ink">
-              startup formation engine
-            </em>
-            .
+            The continuity layer{" "}
+            <em className="italic font-medium text-ink">for ALIF</em>.
           </h1>
           <p className="mt-6 max-w-2xl mx-auto text-lg text-ink-muted">
-            Build Together is the platform layer that converts ALIF&rsquo;s
-            trust, gatherings, and talent into measurable startup output, a
-            high-signal talent graph, and a recurring deal-flow asset.
+            ALIF already creates powerful moments: Sessions, Network, HQ,
+            Summit, Tournament, Jumuah, Fund, and portfolio support. Build
+            Together turns those moments into an always-on ecosystem where
+            builders keep finding each other, shipping together, and becoming
+            visible through real participation.
           </p>
         </div>
       </div>
@@ -107,45 +106,39 @@ function MetricsStrip() {
 const PILLARS = [
   {
     icon: Network,
-    title: "Turn community into startup formation",
+    title: "The gap",
     body:
-      "ALIF already has the most underrated ingredient: trust. Build Together adds the missing layer — structured profiles, mini-projects, and 7-day sprints — that converts trust into actual co-founder formation, on a cadence.",
-  },
-  {
-    icon: Users,
-    title: "Increase member engagement and retention",
-    body:
-      "Members come for events; they stay for the work. Profiles, matches, and sprint cohorts give every member a reason to log in monthly — and a public record of their growth in the ecosystem.",
-  },
-  {
-    icon: Briefcase,
-    title: "Create a stronger incubator and investor pipeline",
-    body:
-      "Every sprint produces shippable artifacts, peer-reviewed teams, and a clear signal of who delivers. ALIF&rsquo;s investor partners can see real work — not pitch decks — before they ever take a meeting.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Build a high-signal talent graph",
-    body:
-      "Skills, sprint completions, peer endorsements, and shipped projects compound into a queryable map of ALIF talent. Hiring partners, co-founders, and mentors can find people by what they&rsquo;ve actually done.",
+      "After the event, cohort, intro, or application, momentum needs somewhere to go. Today it goes nowhere — DMs go quiet, alumni groups drift, intros expire. Build Together is the place that catches the spark.",
   },
   {
     icon: ShieldCheck,
-    title: "Enable premium founder circles",
+    title: "The answer",
     body:
-      "Verified Builders graduate into a private layer reserved for serious operators. Warm intros, deal-flow, partner pairing — the kind of network ALIF can offer as a top-tier membership benefit.",
+      "A community layer that connects people, projects, sprints, rooms, and proof of work — so the moments ALIF already creates compound instead of evaporate.",
+  },
+  {
+    icon: Users,
+    title: "Why it matters",
+    body:
+      "Higher community retention. Stronger Network talent signal. More value for Sessions alumni. More help for portfolio companies. More proof of who actually builds. More first believers for early founders. Stronger ALIF ecosystem gravity.",
+  },
+  {
+    icon: Briefcase,
+    title: "What this is not",
+    body:
+      "Not cofounder assignment. Not a job board. Not a Discord. Not social media. Build Together does not endorse, assign, or guarantee outcomes.",
   },
   {
     icon: Sparkles,
-    title: "Enable sponsored build sprints",
+    title: "What this is",
     body:
-      "Foundations, family offices, and corporate partners can sponsor themed sprints (climate, faith-tech, healthcare). ALIF captures the cohort, the IP, and a recurring sponsorship line — beyond ticketed events.",
+      "A place to keep building. A proof-of-work layer. A trust graph. A bridge between ALIF products — Sessions, Network, HQ, Summit, Tournament, Jumuah, Fund. A way to make San Francisco energy continuous, everywhere.",
   },
   {
     icon: LineChart,
-    title: "Track ecosystem output",
+    title: "Measurable output",
     body:
-      "Profiles in. Sprints completed. Companies formed. Capital raised by alumni. Every output is measurable and reportable — making ALIF&rsquo;s ecosystem impact defensible to boards, funders, and partners.",
+      "Sprints completed. Projects shipped. Connections formed. Builders graduating into Verified. Every signal becomes data — defensible to boards, funders, and partners.",
   },
 ];
 
@@ -156,10 +149,10 @@ function Pillars() {
         <div className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
-            The strategic surface
+            The thesis
           </span>
           <h2 className="mt-5 h-section">
-            What Build Together gives ALIF that nothing else does.
+            Catch the spark. Make momentum continuous.
           </h2>
         </div>
 

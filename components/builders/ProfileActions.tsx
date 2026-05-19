@@ -69,7 +69,7 @@ export function ProfileActions({
           )}
         >
           <Heart className={cn("h-3.5 w-3.5", interested && "fill-current")} />
-          {interested ? "Interested" : "Interested?"}
+          {interested ? "Conversation started" : "Start a conversation"}
         </button>
         <button
           type="button"
@@ -77,7 +77,7 @@ export function ProfileActions({
           className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-paper-line bg-paper px-3 py-2 text-sm font-medium text-ink-soft transition-colors hover:border-gold-500/40 hover:bg-gold-50 hover:text-gold-600"
         >
           <Mail className="h-3.5 w-3.5" />
-          Invite
+          Invite to build
         </button>
       </div>
 

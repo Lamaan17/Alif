@@ -4,6 +4,7 @@ import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import Sprints from "@/components/Sprints";
 import BuilderJourney from "@/components/landing/BuilderJourney";
+import RoomAfterRoom from "@/components/landing/RoomAfterRoom";
 import TrustLayer from "@/components/TrustLayer";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -34,6 +35,7 @@ export default async function Home() {
       <TickerBar items={tickerItems} />
       <Nav />
       <Hero />
+      <RoomAfterRoom />
       {liveSprint && <LiveSprint sprint={liveSprint} />}
       <Features />
       <HowItWorks />

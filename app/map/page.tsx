@@ -96,12 +96,12 @@ export default async function MapPage() {
             className="mt-6 font-display font-semibold text-4xl leading-[1.02] sm:text-5xl md:text-[72px]"
             style={{ letterSpacing: "-0.045em" }}
           >
-            A global movement of{" "}
-            <em className="italic font-medium text-ink">ambitious builders</em>.
+            Where ALIF is{" "}
+            <em className="italic font-medium text-ink">happening</em>.
           </h1>
           <p className="lead mt-5">
-            The ALIF network mapped across cities — live builder counts,
-            featured hubs, and the collaborations forming between them.
+            Cities, rooms, projects, and builders carrying ALIF energy beyond
+            San Francisco.
           </p>
         </div>
 

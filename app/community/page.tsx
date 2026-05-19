@@ -73,30 +73,42 @@ export default async function CommunityPage() {
     (p?.looking_for?.length ?? 0) > 0;
 
   const items: ChecklistItem[] = [
-    { label: "Complete your builder profile", done: profileComplete },
-    { label: "Join a build sprint", done: (sprintAccepts ?? 0) > 0 },
     {
-      label: "Contribute to a project collaboration",
+      label: "Show up to ALIF spaces",
+      done:
+        badgeKinds.includes("event_attendee") ||
+        badgeKinds.includes("sessions_participant") ||
+        badgeKinds.includes("hq_visitor") ||
+        badgeKinds.includes("jumuah_attendee") ||
+        badgeKinds.includes("summit_participant") ||
+        badgeKinds.includes("tournament_builder"),
+    },
+    { label: "Complete your profile", done: profileComplete },
+    { label: "Join a sprint", done: (sprintAccepts ?? 0) > 0 },
+    {
+      label: "Help on a project",
       done: (projectAccepts ?? 0) > 0,
     },
     {
-      label: "Attend an ALIF event",
-      done: badgeKinds.includes("event_attendee"),
-    },
-    {
-      label: "Receive a peer or mentor endorsement",
+      label: "Attend an event or HQ session",
       done:
-        badgeKinds.includes("mentor_endorsed") ||
-        badgeKinds.includes("active_collaborator"),
+        badgeKinds.includes("event_attendee") ||
+        badgeKinds.includes("hq_visitor"),
     },
     {
-      label: "Ship a project publicly",
+      label: "Ship something useful",
       done:
         (p?.past_projects?.length ?? 0) > 0 ||
         badgeKinds.includes("shipped_project"),
     },
     {
-      label: "Receive ALIF verification",
+      label: "Receive peer or mentor signal",
+      done:
+        badgeKinds.includes("mentor_endorsed") ||
+        badgeKinds.includes("active_collaborator"),
+    },
+    {
+      label: "Keep building",
       done: verified || level >= 3,
     },
   ];
@@ -111,12 +123,12 @@ export default async function CommunityPage() {
             {unlocked ? (
               <>
                 <ShieldCheck className="h-3 w-3 text-moss-500" />
-                You&rsquo;re verified · welcome in
+                Welcome to the room after the room
               </>
             ) : (
               <>
                 <Sparkles className="h-3 w-3" />
-                Verified builder community
+                ALIF Community · room after the room
               </>
             )}
           </span>
@@ -124,13 +136,21 @@ export default async function CommunityPage() {
             className="mt-6 font-display font-semibold text-4xl leading-[1.02] sm:text-5xl md:text-[64px]"
             style={{ letterSpacing: "-0.04em" }}
           >
-            Verified Builder{" "}
+            ALIF{" "}
             <em className="italic font-medium text-ink">Community</em>
           </h1>
           <p className="lead mt-5">
-            A high-trust layer for builders who actively contribute,
-            collaborate, and participate in the ecosystem.
+            The room after the room — where people from Sessions, Network, HQ,
+            Summit, Tournament, Jumuah, and ALIF companies keep building
+            together.
           </p>
+          {!unlocked && (
+            <p className="mx-auto mt-4 max-w-2xl text-[13px] leading-relaxed text-ink-muted">
+              This is not a Discord. Not a feed. Not a place to collect
+              followers. It is a living directory of people who have shown up,
+              shipped, helped, and contributed.
+            </p>
+          )}
         </div>
 
         {/* Cards */}
@@ -147,12 +167,15 @@ export default async function CommunityPage() {
         <div className="mt-14 flex flex-col items-center justify-center gap-3 sm:flex-row">
           {!unlocked ? (
             <>
-              <Link href="/sprints" className="btn-primary">
-                Join a Sprint
+              <Link href="/login" className="btn-primary">
+                Join the Community
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/dashboard/edit" className="btn-secondary">
-                Create Builder Profile
+              <Link href="/sprints" className="btn-secondary">
+                Join a Sprint
+              </Link>
+              <Link href="/builders" className="btn-secondary">
+                Explore People
               </Link>
             </>
           ) : (
@@ -167,6 +190,13 @@ export default async function CommunityPage() {
             </>
           )}
         </div>
+
+        {/* Liability / framing disclaimer */}
+        <p className="mx-auto mt-14 max-w-2xl text-center text-[11px] leading-relaxed text-ink-muted">
+          Build Together does not assign or endorse cofounders. It helps ALIF
+          builders discover people, projects, and rooms where trust can form
+          through real participation.
+        </p>
       </div>
     </main>
   );

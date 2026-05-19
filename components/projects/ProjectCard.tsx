@@ -18,6 +18,32 @@ import { LevelPill } from "@/components/badges/LevelPill";
 import type { ProjectRow } from "@/lib/data/projects";
 import { cn } from "@/lib/utils";
 
+/** Deterministic-but-varied "source" category derived from the project id.
+ * For the demo this gives every card an ALIF-affiliated source chip without
+ * a schema change. Easy to swap for a real DB column later. */
+const SOURCES = [
+  { label: "From Sessions",  tone: "gold" },
+  { label: "From Network",   tone: "moss" },
+  { label: "From HQ",        tone: "ink"  },
+  { label: "From Portfolio", tone: "gold" },
+  { label: "From Partners",  tone: "moss" },
+  { label: "From Community", tone: "ink"  },
+] as const;
+
+function projectSource(id: string) {
+  let h = 0;
+  for (let i = 0; i < id.length; i++) {
+    h = ((h << 5) - h + id.charCodeAt(i)) | 0;
+  }
+  return SOURCES[Math.abs(h) % SOURCES.length];
+}
+
+const SOURCE_TONE: Record<(typeof SOURCES)[number]["tone"], string> = {
+  moss: "border-moss-100 bg-moss-50 text-moss-700",
+  gold: "border-gold-100 bg-gold-50 text-gold-600",
+  ink:  "border-paper-line bg-paper-warm text-ink-soft",
+};
+
 export function ProjectCard({
   project,
   applicationStatus,
@@ -26,6 +52,7 @@ export function ProjectCard({
   applicationStatus?: "pending" | "accepted" | "declined" | "withdrawn";
 }) {
   const owner = project.owner;
+  const source = projectSource(project.id);
   const visibleSkills = project.skills_needed.slice(0, 4);
   const extraSkills = project.skills_needed.length - visibleSkills.length;
   const closes = project.deadline ? new Date(project.deadline) : null;
@@ -57,6 +84,16 @@ export function ProjectCard({
           aria-hidden
         />
         <div className="min-w-0 flex-1">
+          <div className="mb-1.5">
+            <span
+              className={cn(
+                "inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium tracking-wide",
+                SOURCE_TONE[source.tone],
+              )}
+            >
+              {source.label}
+            </span>
+          </div>
           <div className="flex items-start justify-between gap-3">
             <h3 className="font-display text-lg leading-tight tracking-tight text-ink">
               <Link

@@ -7,46 +7,54 @@ type Step = {
 const steps: Step[] = [
   {
     n: "01",
-    title: "Create your builder profile",
+    title: "Show up",
     body:
-      "Tell us what you've shipped, what you want to work on, and how much time you can give. Two minutes, no resume.",
+      "Join Sessions, Network, HQ, Summit, Tournament, Jumuah, or a sprint. Be in the room.",
   },
   {
     n: "02",
-    title: "Connect or apply to collaborate",
+    title: "Build",
     body:
-      "Browse builders by craft and conviction. Send a clear ask, or apply to projects others have posted.",
+      "Contribute to projects, sprints, and community work. Do the thing that's hard.",
   },
   {
     n: "03",
-    title: "Build a mini project together",
+    title: "Be seen",
     body:
-      "Run a 7-day sprint with a real deliverable. See how someone thinks, decides, and ships before you commit.",
+      "Earn trust through participation and proof of work. Get noticed by the people who matter.",
   },
   {
     n: "04",
-    title: "Earn trust signals, unlock circles",
+    title: "Enter the room",
     body:
-      "Finish sprints, get endorsed, and graduate into verified builder circles with private intros and deal flow.",
+      "Unlock deeper community, intros, and opportunities that come from doing the work.",
+  },
+  {
+    n: "05",
+    title: "Build bigger things",
+    body:
+      "Form teams, join companies, start projects. Keep going past the first spark.",
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section id="how" className="relative border-y border-paper-line bg-paper-warm">
+    <section
+      id="how"
+      className="relative border-y border-paper-line bg-paper-warm"
+    >
       <div className="container-prose py-20 sm:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
-            How it works
+            The path
           </span>
           <h2 className="mt-5 h-section">
-            From profile to verified builder — in four steps.
+            From showing up to being trusted.
           </h2>
         </div>
 
-        <ol className="relative mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {/* connecting line on desktop */}
+        <ol className="relative mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5">
           <div
             aria-hidden
             className="pointer-events-none absolute left-6 right-6 top-[2.25rem] hidden h-px bg-gradient-to-r from-transparent via-paper-line to-transparent lg:block"
@@ -57,7 +65,7 @@ export default function HowItWorks() {
               className="relative rounded-xl2 border border-paper-line bg-paper p-6 shadow-card"
             >
               <div className="flex items-center gap-3">
-                <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-paper-line bg-paper-warm font-display text-sm text-ink-soft">
+                <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-paper-line bg-paper-warm font-display text-sm font-semibold text-ink">
                   {s.n}
                   {i < steps.length - 1 && (
                     <span

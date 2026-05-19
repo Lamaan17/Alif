@@ -32,13 +32,13 @@ export function TopMatches({ items }: { items: ScoredBuilder[] }) {
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-gold-100 bg-gold-50 px-2.5 py-1 text-[11px] font-medium text-gold-600">
             <Sparkles className="h-3 w-3" />
-            Top matches for you
+            People you may want to build with
           </div>
           <h2 className="mt-3 font-display text-xl tracking-tight">
-            Builders we think you should meet first.
+            Builders worth a first conversation.
           </h2>
           <p className="mt-1 text-[13px] text-ink-muted">
-            Ranked across all members — your filters below stay separate.
+            Ranked by collaboration fit across the ALIF network — your filters below stay separate.
           </p>
         </div>
         {items.length > 3 && (
@@ -97,10 +97,14 @@ function MatchCard({
 
   return (
     <article className="group relative flex flex-col rounded-xl border border-paper-line bg-paper-warm/40 p-4 transition-all hover:border-moss-500/40 hover:bg-paper">
-      {/* Score badge */}
-      <div className="absolute -top-2.5 right-4 inline-flex items-center gap-1 rounded-full bg-ink px-2 py-0.5 text-[10px] font-medium text-paper">
+      {/* Collaboration fit */}
+      <div
+        className="absolute -top-2.5 right-4 inline-flex items-center gap-1 rounded-full bg-ink px-2 py-0.5 text-[10px] font-medium text-paper"
+        title="Collaboration fit"
+      >
         <Sparkles className="h-2.5 w-2.5 text-gold-500" />
         {score}
+        <span className="text-paper/60">fit</span>
       </div>
 
       <div className="flex items-start gap-3">
@@ -164,7 +168,7 @@ function MatchCard({
             <Heart
               className={cn("h-3 w-3", interested && "fill-current")}
             />
-            {interested ? "Interested" : "Interested?"}
+            {interested ? "Started" : "Start a conversation"}
           </button>
           <button
             type="button"
@@ -172,7 +176,7 @@ function MatchCard({
             className="inline-flex items-center gap-1 rounded-full border border-paper-line bg-paper px-2.5 py-1 text-[11px] font-medium text-ink-soft transition-colors hover:border-gold-500/40 hover:bg-gold-50 hover:text-gold-600"
           >
             <Mail className="h-3 w-3" />
-            Invite
+            Invite to build
           </button>
         </div>
       </div>

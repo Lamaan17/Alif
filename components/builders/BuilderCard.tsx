@@ -236,7 +236,7 @@ export function BuilderCard({
             <Heart
               className={cn("h-3 w-3", interested && "fill-current")}
             />
-            {interested ? "Interested" : "Interested?"}
+            {interested ? "Conversation started" : "Start a conversation"}
           </button>
 
           <button
@@ -245,7 +245,7 @@ export function BuilderCard({
             className="inline-flex items-center gap-1 rounded-full border border-paper-line bg-paper px-3 py-1.5 text-[12px] font-medium text-ink-soft transition-colors hover:border-gold-500/40 hover:bg-gold-50 hover:text-gold-600"
           >
             <Mail className="h-3 w-3" />
-            Invite
+            Invite to build
           </button>
         </div>
       </div>

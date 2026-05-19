@@ -67,11 +67,15 @@ export default async function DashboardPage() {
           <div>
             <span className="eyebrow">
               <span className="eyebrow-dot" />
-              Your founder profile
+              ALIF Passport
             </span>
             <h1 className="mt-3 font-display text-3xl tracking-tight">
-              Welcome back, {firstName(profile.full_name)}.
+              Your ALIF Passport
             </h1>
+            <p className="lead mt-2 text-sm">
+              {firstName(profile.full_name)}&rsquo;s proof of showing up, shipping,
+              helping, and moving through the ALIF ecosystem.
+            </p>
           </div>
           <Link href="/dashboard/edit" className="btn-primary">
             <Pencil className="h-4 w-4" />

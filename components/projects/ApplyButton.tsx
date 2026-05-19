@@ -78,7 +78,7 @@ export function ApplyButton({
         ) : (
           <Send className="h-3.5 w-3.5" />
         )}
-        {disabled ? "Closed" : kind === "project" ? "Apply to collaborate" : "Apply to join sprint"}
+        {disabled ? "Closed" : kind === "project" ? "Offer to help" : "Join the sprint"}
       </button>
       <ApplyDialog
         open={open}

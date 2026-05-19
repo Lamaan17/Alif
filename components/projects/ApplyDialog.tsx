@@ -117,16 +117,16 @@ export function ApplyDialog({
             <div className="inline-flex items-center gap-2 rounded-full border border-moss-100 bg-moss-50 px-2.5 py-1 text-[11px] font-medium text-moss-700">
               {kind === "project" ? (
                 <>
-                  <Hand className="h-3 w-3" /> Apply to collaborate
+                  <Hand className="h-3 w-3" /> Offer to help
                 </>
               ) : (
                 <>
-                  <Sparkles className="h-3 w-3" /> Apply to sprint
+                  <Sparkles className="h-3 w-3" /> Join the sprint
                 </>
               )}
             </div>
             <h2 className="mt-3 font-display text-xl leading-tight tracking-tight">
-              Apply to {kind === "project" ? "join" : "join the"}{" "}
+              {kind === "project" ? "Offer to help on" : "Join"}{" "}
               <span className="text-moss-700">{targetTitle}</span>
             </h2>
             <p className="mt-1.5 text-sm text-ink-muted">

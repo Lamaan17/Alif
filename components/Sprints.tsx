@@ -17,15 +17,18 @@ export default function Sprints() {
         <div className="lg:col-span-5">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
-            Build sprints
+            7-day build sprint
           </span>
           <h2 className="mt-5 h-section">
-            A 7-day project. A real answer to <em className="italic font-medium text-ink">“should we start a company together?”</em>
+            A small group. A real problem.{" "}
+            <em className="italic font-medium text-ink">
+              One week to ship something useful.
+            </em>
           </h2>
           <p className="lead mt-5">
-            Sprints are tiny, time-boxed builds with a clear deliverable. They&rsquo;re not
-            hackathons and they&rsquo;re not interviews — they&rsquo;re the lightest possible
-            way to feel what working with someone is actually like.
+            Sprints are lightweight rooms where ALIF builders test momentum by
+            shipping something useful together — a real answer to{" "}
+            <em className="italic font-medium text-ink">should we keep building together?</em>
           </p>
 
           <ul className="mt-8 space-y-3 text-sm">

@@ -12,7 +12,7 @@ import {
 } from "@/lib/data/projects";
 import { ProjectFilters as Filters } from "./ProjectFilters";
 
-export const metadata = { title: "Projects — Build Together" };
+export const metadata = { title: "Things Worth Building — alif·build" };
 
 function parseFilters(sp: Record<string, string | undefined>): ProjectFilters {
   return {
@@ -49,19 +49,19 @@ export default async function ProjectsPage({
           <div>
             <span className="eyebrow">
               <span className="eyebrow-dot" />
-              Projects
+              Things to build
             </span>
             <h1 className="mt-3 font-display text-3xl tracking-tight sm:text-4xl">
-              A curated opportunity board.
+              Things Worth Building.
             </h1>
             <p className="lead mt-2 text-sm">
-              Real mini-projects from ALIF builders. Apply to collaborate on
-              ones that match your shape.
+              Calls to build from ALIF builders, portfolio companies, partners,
+              and community members looking for people who can help ship.
             </p>
           </div>
           <Link href="/projects/new" className="btn-primary">
             <Plus className="h-4 w-4" />
-            Post a project
+            Post a call to build
           </Link>
         </div>
 

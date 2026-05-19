@@ -18,7 +18,7 @@ import { getPulseSnapshot } from "@/lib/data/pulse";
 import { Sparkline } from "@/components/charts/Sparkline";
 import { BarChart } from "@/components/charts/BarChart";
 
-export const metadata = { title: "ALIF Pulse — alif·build" };
+export const metadata = { title: "This Week in ALIF — alif·build" };
 
 export default async function PulsePage() {
   const supabase = createClient();
@@ -74,18 +74,18 @@ export default async function PulsePage() {
         <div className="mx-auto max-w-3xl text-center">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
-            ALIF Pulse · ecosystem report
+            This week in ALIF
           </span>
           <h1
             className="mt-6 font-display font-semibold text-4xl leading-[1.02] sm:text-5xl md:text-[72px]"
             style={{ letterSpacing: "-0.045em" }}
           >
-            The shape of the network,{" "}
-            <em className="italic font-medium text-ink">in motion</em>.
+            This Week{" "}
+            <em className="italic font-medium text-ink">in ALIF</em>.
           </h1>
           <p className="lead mt-5">
-            Builders shipping, cities growing, collaborations forming. A live
-            read on the ALIF ecosystem.
+            A live pulse of who&rsquo;s building, where momentum is forming,
+            and what needs help next.
           </p>
         </div>
 

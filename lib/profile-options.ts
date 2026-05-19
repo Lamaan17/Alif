@@ -82,14 +82,23 @@ export function levelLabel(level: number | null | undefined) {
 }
 
 export const BADGES = [
-  { value: "alif_verified",       label: "Verified Builder",   tone: "moss" },
-  { value: "event_attendee",      label: "ALIF Event Attendee",tone: "ink"  },
-  { value: "summit_participant",  label: "Summit Participant", tone: "gold" },
-  { value: "cohort_member",       label: "Cohort Member",      tone: "gold" },
-  { value: "sprint_finisher",     label: "Sprint Finisher",    tone: "moss" },
-  { value: "shipped_project",     label: "Shipped Project",    tone: "moss" },
-  { value: "mentor_endorsed",     label: "Mentor Endorsed",    tone: "gold" },
-  { value: "active_collaborator", label: "Active Builder",     tone: "ink"  },
+  // Trust signals
+  { value: "alif_verified",          label: "Verified Builder",       tone: "moss" },
+  { value: "sprint_finisher",        label: "Sprint Finisher",        tone: "moss" },
+  { value: "shipped_project",        label: "Project Shipped",        tone: "moss" },
+  { value: "mentor_endorsed",        label: "Mentor Endorsed",        tone: "gold" },
+  { value: "active_collaborator",    label: "Active Builder",         tone: "ink"  },
+  // ALIF Passport
+  { value: "sessions_participant",   label: "Sessions Participant",   tone: "gold" },
+  { value: "network_member",         label: "Network Member",         tone: "moss" },
+  { value: "hq_visitor",             label: "HQ Visitor",             tone: "ink"  },
+  { value: "jumuah_attendee",        label: "Jumuah Attendee",        tone: "gold" },
+  { value: "summit_participant",     label: "Summit Participant",     tone: "gold" },
+  { value: "tournament_builder",     label: "Tournament Builder",     tone: "moss" },
+  { value: "portfolio_contributor",  label: "Portfolio Contributor",  tone: "gold" },
+  // Legacy / community
+  { value: "event_attendee",         label: "ALIF Event Attendee",    tone: "ink"  },
+  { value: "cohort_member",          label: "Cohort Member",          tone: "gold" },
 ] as const;
 
 export type BadgeKind = (typeof BADGES)[number]["value"];

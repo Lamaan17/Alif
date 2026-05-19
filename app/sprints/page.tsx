@@ -35,14 +35,14 @@ export default async function SprintsPage() {
         <div className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
-            Build sprints
+            Sprints
           </span>
           <h1 className="mt-3 font-display text-3xl tracking-tight sm:text-4xl">
-            7 days. Real chemistry. Real output.
+            Seven days. One build. Real feedback.
           </h1>
           <p className="lead mt-3 text-sm">
-            Tiny time-boxed builds with a clear deliverable. The fastest honest
-            test of <em>can we actually start a company together?</em>
+            Sprints are lightweight rooms where ALIF builders test momentum by
+            shipping something useful together.
           </p>
         </div>
 
