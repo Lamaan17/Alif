@@ -40,6 +40,7 @@ export function Globe({
     window.addEventListener("resize", onResize);
     onResize();
 
+    // cobe v2 ships incomplete types — onRender is real but not declared.
     const globe = createGlobe(canvasRef.current, {
       devicePixelRatio: 2,
       width: width * 2,
@@ -50,16 +51,18 @@ export function Globe({
       diffuse: 1.4,
       mapSamples: 16000,
       mapBrightness: 5.5,
-      // Cream-cool tone for the dotted continents on the dark sphere
       baseColor: [0.9, 0.88, 0.83],
-      markerColor: [0.48, 0.71, 0.56], // moss-500
+      markerColor: [0.48, 0.71, 0.56],
       glowColor: [0.65, 0.85, 0.72],
       markers: markers.map((m) => ({
         location: [m.lat, m.lng],
         size: m.size,
       })),
-      onRender: (state) => {
-        // Smooth target tracking + auto-rotation
+      onRender: (state: {
+        phi: number;
+        width: number;
+        height: number;
+      }) => {
         if (!pointerInteracting.current) {
           phi.current += phiVelocity.current;
         }
@@ -68,7 +71,7 @@ export function Globe({
         state.width = width * 2;
         state.height = width * 2;
       },
-    });
+    } as Parameters<typeof createGlobe>[1]);
 
     setReady(true);
     return () => {
