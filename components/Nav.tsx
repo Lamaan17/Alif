@@ -44,14 +44,8 @@ export default async function Nav() {
         </Link>
 
         <nav className="hidden items-center gap-7 text-sm text-ink-muted md:flex">
-          <a href="#how" className="transition-colors hover:text-ink">
-            How it works
-          </a>
           <a href="#sprints" className="transition-colors hover:text-ink">
             Sprints
-          </a>
-          <a href="#journey" className="transition-colors hover:text-ink">
-            Journey
           </a>
           <a href="/community" className="transition-colors hover:text-ink">
             Community

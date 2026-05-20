@@ -64,7 +64,7 @@ export async function AppHeader({ email }: { email?: string | null }) {
             People
           </NavLink>
           <NavLink href="/projects" icon={Lightbulb}>
-            Things to Build
+            Projects
           </NavLink>
           <NavLink href="/sprints" icon={Sparkles}>
             Sprints

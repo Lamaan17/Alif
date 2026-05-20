@@ -17,13 +17,11 @@ export default function Hero() {
           </span>
 
           <h1
-            className="mt-8 font-display font-semibold text-4xl text-ink sm:text-6xl md:text-[88px] md:leading-[1.0]"
-            style={{ letterSpacing: "-0.045em" }}
+            className="mt-8 font-display font-semibold text-5xl text-ink sm:text-7xl md:text-[112px] md:leading-[0.95]"
+            style={{ letterSpacing: "-0.05em" }}
           >
-            ALIF brings builders into the room.{" "}
-            <em className="italic font-medium text-ink">
-              Build Together helps them keep building after they leave it.
-            </em>
+            Keep building{" "}
+            <em className="italic font-medium text-ink">after the room</em>.
           </h1>
 
           <p className="mt-8 max-w-2xl text-lg text-ink-muted sm:text-xl">

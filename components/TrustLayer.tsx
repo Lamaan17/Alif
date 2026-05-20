@@ -124,9 +124,6 @@ export default function TrustLayer() {
             Unlock Verified Community
             <ArrowRight className="h-4 w-4" />
           </a>
-          <a href="#journey" className="btn-secondary">
-            View Builder Journey
-          </a>
         </div>
       </div>
     </section>
