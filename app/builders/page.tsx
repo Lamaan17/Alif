@@ -17,6 +17,7 @@ import { rankBuilders } from "@/lib/data/matching";
 import { Filters } from "./Filters";
 import { BuilderCard } from "@/components/builders/BuilderCard";
 import { TopMatches } from "@/components/builders/TopMatches";
+import { DirectoryLock } from "@/components/builders/DirectoryLock";
 
 export const metadata = { title: "People — alif·build" };
 
@@ -65,11 +66,21 @@ export default async function BuildersPage({
     supabase
       .from("profiles")
       .select(
-        "id, role_type, industries, looking_for, startup_stage, commitment_level, timezone",
+        "id, role_type, industries, looking_for, startup_stage, commitment_level, timezone, level, is_admin",
       )
       .eq("id", user.id)
       .maybeSingle(),
   ]);
+
+  const viewerLevel =
+    (viewerProfile.data as { level: number } | null)?.level ?? 0;
+  const viewerIsAdmin =
+    !!(viewerProfile.data as { is_admin: boolean } | null)?.is_admin;
+  // Access ladder: Community Member (3) and up get the full directory.
+  // Contributor (2) gets curated recommendations only. New User (<2) gets
+  // blurred previews behind a lock.
+  const fullAccess = viewerLevel >= 3 || viewerIsAdmin;
+  const contributorAccess = viewerLevel === 2;
 
   const badgeMap = await getBadgesForMany(builders.map((b) => b.id));
 
@@ -133,7 +144,8 @@ export default async function BuildersPage({
           )}
         </div>
 
-        {topMatches.length > 0 && (
+        {/* Curated recommendations: Contributor+ (and full-access members) */}
+        {topMatches.length > 0 && (fullAccess || contributorAccess) && (
           <div className="mt-8">
             <TopMatches items={topMatches} />
           </div>
@@ -147,7 +159,7 @@ export default async function BuildersPage({
           <section>
             {builders.length === 0 ? (
               <EmptyState />
-            ) : (
+            ) : fullAccess ? (
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {builders.map((b) => (
                   <BuilderCard
@@ -159,6 +171,22 @@ export default async function BuildersPage({
                   />
                 ))}
               </div>
+            ) : (
+              <DirectoryLock
+                tier={contributorAccess ? "contributor" : "new_user"}
+              >
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+                  {builders.slice(0, 6).map((b) => (
+                    <BuilderCard
+                      key={b.id}
+                      builder={b}
+                      isInterested={false}
+                      isMatched={false}
+                      badgeKinds={badgeMap.get(b.id) ?? []}
+                    />
+                  ))}
+                </div>
+              </DirectoryLock>
             )}
           </section>
         </div>

@@ -5,6 +5,7 @@ import { ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { AppHeader } from "@/components/AppHeader";
 import { CommunityCards } from "@/components/community/CommunityCards";
+import { AccessLadder } from "@/components/community/AccessLadder";
 import {
   AccessChecklist,
   type ChecklistItem,
@@ -23,7 +24,7 @@ export default async function CommunityPage() {
   const { data: profile } = await supabase
     .from("profiles")
     .select(
-      "level, verified, full_name, bio, skills, past_projects, looking_for",
+      "level, verified, is_admin, full_name, bio, skills, past_projects, looking_for",
     )
     .eq("id", user.id)
     .maybeSingle();
@@ -31,6 +32,7 @@ export default async function CommunityPage() {
     | {
         level: number;
         verified: boolean;
+        is_admin: boolean;
         full_name: string;
         bio: string | null;
         skills: string[] | null;
@@ -41,7 +43,8 @@ export default async function CommunityPage() {
 
   const level = p?.level ?? 0;
   const verified = !!p?.verified;
-  const unlocked = level >= 3 || verified;
+  const isAdminViewer = !!p?.is_admin;
+  const unlocked = level >= 3 || verified || isAdminViewer;
 
   // Has user accepted into any sprint?
   const { count: sprintAccepts } = await supabase
@@ -153,8 +156,13 @@ export default async function CommunityPage() {
           )}
         </div>
 
+        {/* Access ladder */}
+        <div className="mt-16">
+          <AccessLadder level={level} isAdmin={isAdminViewer} />
+        </div>
+
         {/* Cards */}
-        <div className="mt-14">
+        <div className="mt-16">
           <CommunityCards unlocked={unlocked} />
         </div>
 

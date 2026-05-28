@@ -11,6 +11,7 @@ const PROTECTED = [
   "/community",
   "/map",
   "/pulse",
+  "/asks",
 ];
 const AUTH_ONLY = ["/login"]; // redirect away if already signed in
 
@@ -67,7 +68,7 @@ export async function updateSession(request: NextRequest) {
   }
 
   // Gate "must-have-profile" routes
-  const PROFILE_REQUIRED = ["/dashboard", "/builders", "/projects", "/sprints", "/circle", "/community", "/map", "/pulse"];
+  const PROFILE_REQUIRED = ["/dashboard", "/builders", "/projects", "/sprints", "/circle", "/community", "/map", "/pulse", "/asks"];
   if (
     user &&
     PROFILE_REQUIRED.some((p) => path === p || path.startsWith(p + "/"))

@@ -67,19 +67,103 @@ export type WorkingStyle = (typeof WORKING_STYLES)[number]["value"];
  * Progression & badges
  * ------------------------------------------------------------------ */
 
+// Freemium trust ladder. Public-facing tier names mapped onto the
+// internal `level` column (0–4). Core Team is the is_admin flag, not a level.
 export const LEVELS = [
-  { value: 0, label: "Explorer",         hint: "Joined ALIF" },
-  { value: 1, label: "Builder",          hint: "Profile complete" },
-  { value: 2, label: "Collaborator",     hint: "Applied to a sprint or project" },
-  { value: 3, label: "Verified Builder", hint: "Completed a sprint with positive peer review" },
-  { value: 4, label: "Founder Circle",   hint: "Approved trusted member" },
+  { value: 0, label: "New User",         hint: "Account created" },
+  { value: 1, label: "New User",         hint: "Builder Passport started" },
+  { value: 2, label: "Contributor",      hint: "Helping projects, answering asks" },
+  { value: 3, label: "Community Member", hint: "Full builder network access" },
+  { value: 4, label: "Trusted Builder",  hint: "Private rooms, hosting, mentoring" },
 ] as const;
 
 export type Level = (typeof LEVELS)[number]["value"];
 
-export function levelLabel(level: number | null | undefined) {
-  return LEVELS.find((l) => l.value === level)?.label ?? "Explorer";
+/** Public tier name for a given internal level. */
+export function tierName(level: number | null | undefined): string {
+  const lv = typeof level === "number" ? level : 0;
+  if (lv <= 1) return "New User";
+  if (lv === 2) return "Contributor";
+  if (lv === 3) return "Community Member";
+  return "Trusted Builder";
 }
+
+export function levelLabel(level: number | null | undefined) {
+  return tierName(level);
+}
+
+/** Access tiers as a constant for "how access works" UIs. */
+export const ACCESS_TIERS = [
+  {
+    key: "new_user",
+    name: "New User",
+    minLevel: 0,
+    blurb: "Create your Builder Passport and start contributing.",
+  },
+  {
+    key: "contributor",
+    name: "Contributor",
+    minLevel: 2,
+    blurb: "Help projects, answer asks, join sprints, and build trust.",
+  },
+  {
+    key: "community_member",
+    name: "Community Member",
+    minLevel: 3,
+    blurb:
+      "Unlock the main ALIF builder network through Sessions, events, contribution + community access, scholarship, or approval.",
+  },
+  {
+    key: "trusted_builder",
+    name: "Trusted Builder",
+    minLevel: 4,
+    blurb:
+      "Apply for deeper access after consistent contribution and community trust.",
+  },
+  {
+    key: "core_team",
+    name: "Core Team",
+    minLevel: 99,
+    blurb: "ALIF operators who curate, verify, and protect the ecosystem.",
+  },
+] as const;
+
+/** Who can answer a Community Ask, by audience. */
+export const ASK_AUDIENCES = [
+  { value: "open",         label: "Open to all",          minLevel: 0 },
+  { value: "contributors", label: "Contributors and up",  minLevel: 2 },
+  { value: "community",    label: "Community Members only",minLevel: 3 },
+  { value: "trusted",      label: "Trusted Builders only", minLevel: 4 },
+] as const;
+
+export type AskAudience = (typeof ASK_AUDIENCES)[number]["value"];
+
+export function audienceMinLevel(audience: string): number {
+  return ASK_AUDIENCES.find((a) => a.value === audience)?.minLevel ?? 0;
+}
+
+export function audienceLabel(audience: string): string {
+  return ASK_AUDIENCES.find((a) => a.value === audience)?.label ?? "Open to all";
+}
+
+/** Does a member meet an ask's answer-audience requirement? Admins always do. */
+export function meetsAudience(
+  level: number | null | undefined,
+  isAdmin: boolean,
+  audience: string,
+): boolean {
+  if (isAdmin) return true;
+  return (level ?? 0) >= audienceMinLevel(audience);
+}
+
+export const ASK_KINDS = [
+  { value: "general",         label: "General" },
+  { value: "website_roast",   label: "Website roast" },
+  { value: "pitch_feedback",  label: "Pitch feedback" },
+  { value: "mvp_testing",     label: "MVP testing" },
+  { value: "intro",           label: "Intro request" },
+  { value: "feedback",        label: "Feedback" },
+] as const;
 
 export const BADGES = [
   // Trust signals

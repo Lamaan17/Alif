@@ -47,6 +47,9 @@ export default async function Nav() {
           <a href="#sprints" className="transition-colors hover:text-ink">
             Sprints
           </a>
+          <a href="/asks" className="transition-colors hover:text-ink">
+            Asks
+          </a>
           <a href="/community" className="transition-colors hover:text-ink">
             Community
           </a>

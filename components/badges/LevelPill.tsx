@@ -1,4 +1,4 @@
-import { levelLabel } from "@/lib/profile-options";
+import { tierName } from "@/lib/profile-options";
 import { cn } from "@/lib/utils";
 
 const LEVEL_TONES: Record<number, string> = {
@@ -12,15 +12,20 @@ const LEVEL_TONES: Record<number, string> = {
 export function LevelPill({
   level,
   size = "sm",
+  isAdmin = false,
 }: {
   level: number | null | undefined;
   size?: "sm" | "md";
+  isAdmin?: boolean;
 }) {
   const lv = typeof level === "number" ? level : 0;
-  const tone = LEVEL_TONES[lv] ?? LEVEL_TONES[0];
+  const tone = isAdmin
+    ? "bg-gold-50 text-gold-600 ring-gold-100"
+    : LEVEL_TONES[lv] ?? LEVEL_TONES[0];
+  const label = isAdmin ? "Core Team" : tierName(lv);
   const sizes = {
-    sm: "px-1.5 py-0.5 text-[10px] gap-1",
-    md: "px-2 py-0.5 text-xs gap-1.5",
+    sm: "px-2 py-0.5 text-[10px]",
+    md: "px-2.5 py-0.5 text-xs",
   }[size];
   return (
     <span
@@ -29,10 +34,8 @@ export function LevelPill({
         tone,
         sizes,
       )}
-      title={`Level ${lv}`}
     >
-      <span className="font-display tracking-tight">L{lv}</span>
-      {levelLabel(lv)}
+      {label}
     </span>
   );
 }
