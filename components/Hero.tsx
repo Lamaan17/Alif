@@ -9,7 +9,7 @@ export default function Hero() {
       />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-paper-line" />
 
-      <div className="container-prose pt-28 pb-28 sm:pt-36 md:pt-40">
+      <div className="container-prose pt-12 pb-24 sm:pt-16 md:pt-20">
         <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
           <a
             href="/login"
