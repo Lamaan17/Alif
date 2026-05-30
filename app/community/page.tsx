@@ -10,6 +10,7 @@ import {
   AccessChecklist,
   type ChecklistItem,
 } from "@/components/community/AccessChecklist";
+import { AlifersHandoff } from "@/components/AlifersHandoff";
 
 export const metadata = { title: "Verified Builder Community — alif·build" };
 
@@ -169,6 +170,11 @@ export default async function CommunityPage() {
         {/* Access checklist */}
         <div className="mx-auto mt-14 max-w-2xl">
           <AccessChecklist items={items} unlocked={unlocked} />
+        </div>
+
+        {/* Alifers handoff — community home ↔ action layer */}
+        <div className="mx-auto mt-10 max-w-2xl">
+          <AlifersHandoff />
         </div>
 
         {/* CTAs */}

@@ -9,6 +9,8 @@ export type AskRow = {
   kind: string;
   audience: string;
   created_at: string;
+  est_minutes: number | null;
+  deadline: string | null;
   author: {
     id: string;
     full_name: string;
@@ -21,7 +23,7 @@ export type AskRow = {
 };
 
 const ASK_SELECT = `
-  id, author_id, title, body, kind, audience, created_at,
+  id, author_id, title, body, kind, audience, created_at, est_minutes, deadline,
   author:profiles!asks_author_id_fkey (
     id, full_name, avatar_url, role_type, level, is_admin
   )

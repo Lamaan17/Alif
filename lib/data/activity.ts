@@ -171,17 +171,25 @@ export async function getActivityForProfile(
 
 function humanBadge(kind: string): string {
   const labels: Record<string, string> = {
+    // Canonical 11
+    sessions_participant: "Sessions Alumni",
+    alifers_member: "Alifers Member",
+    hq_visitor: "HQ Regular",
+    sprint_finisher: "Sprint Finisher",
+    event_attendee: "Event Attendee",
+    mvp_tester: "MVP Tester",
+    website_roasted: "Website Roasted",
+    community_ask_answered: "Community Ask Answered",
+    project_helper: "Project Helper",
+    mentor_endorsed: "Mentor Endorsed",
+    build_sprint_host: "Build Sprint Host",
+    // Legacy
     alif_verified: "Verified Builder",
-    event_attendee: "ALIF Event Attendee",
     summit_participant: "Summit Participant",
     cohort_member: "Cohort Member",
-    sprint_finisher: "Sprint Finisher",
     shipped_project: "Project Shipped",
-    mentor_endorsed: "Mentor Endorsed",
     active_collaborator: "Active Builder",
-    sessions_participant: "Sessions Participant",
     network_member: "Network Member",
-    hq_visitor: "HQ Visitor",
     jumuah_attendee: "Jumuah Attendee",
     tournament_builder: "Tournament Builder",
     portfolio_contributor: "Portfolio Contributor",

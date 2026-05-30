@@ -55,8 +55,8 @@ export default async function ProjectsPage({
               Things Worth Building.
             </h1>
             <p className="lead mt-2 text-sm">
-              Calls to build from ALIF builders, portfolio companies, partners,
-              and community members looking for people who can help ship.
+              Ongoing things worth building that need useful help — from ALIF
+              builders, portfolio companies, partners, and community members.
             </p>
           </div>
           <Link href="/projects/new" className="btn-primary">

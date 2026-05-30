@@ -13,23 +13,36 @@ import {
   Moon,
   Swords,
   Briefcase,
+  Beaker,
+  Flame,
+  HelpCircle,
+  Wrench,
+  Mic,
+  UsersRound,
   type LucideIcon,
 } from "lucide-react";
 import { badgeMeta, type BadgeTone } from "@/lib/profile-options";
 import { cn } from "@/lib/utils";
 
 const ICONS: Record<string, LucideIcon> = {
-  alif_verified: BadgeCheck,
-  event_attendee: CalendarHeart,
-  cohort_member: GraduationCap,
-  sprint_finisher: Flag,
-  shipped_project: PackageCheck,
-  mentor_endorsed: HandHeart,
-  active_collaborator: Users,
-  // ALIF Passport
+  // Canonical 11
   sessions_participant: MessageCircle,
-  network_member: Network,
+  alifers_member: UsersRound,
   hq_visitor: Building2,
+  sprint_finisher: Flag,
+  event_attendee: CalendarHeart,
+  mvp_tester: Beaker,
+  website_roasted: Flame,
+  community_ask_answered: HelpCircle,
+  project_helper: Wrench,
+  mentor_endorsed: HandHeart,
+  build_sprint_host: Mic,
+  // Legacy
+  alif_verified: BadgeCheck,
+  cohort_member: GraduationCap,
+  shipped_project: PackageCheck,
+  active_collaborator: Users,
+  network_member: Network,
   jumuah_attendee: Moon,
   summit_participant: Mountain,
   tournament_builder: Swords,

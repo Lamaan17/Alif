@@ -118,10 +118,16 @@ export function AskForm() {
 }
 
 type AskKind =
-  | "general"
   | "website_roast"
+  | "review_post"
+  | "idea_feedback"
   | "pitch_feedback"
   | "mvp_testing"
+  | "find_users"
+  | "design_help"
+  | "code_help"
+  | "pricing_check"
   | "intro"
-  | "feedback";
+  | "feedback"
+  | "general";
 type AskAudienceValue = "open" | "contributors" | "community" | "trusted";

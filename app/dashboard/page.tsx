@@ -27,6 +27,7 @@ import { LevelPill } from "@/components/badges/LevelPill";
 import { BadgeRow } from "@/components/badges/BadgeChip";
 import { getActivityForProfile } from "@/lib/data/activity";
 import { ActivityFeed } from "@/components/profile/ActivityFeed";
+import { AlifersHandoff } from "@/components/AlifersHandoff";
 
 export const metadata = { title: "Dashboard — alif·build" };
 
@@ -330,6 +331,11 @@ export default async function DashboardPage() {
               <ActivityFeed items={activity} />
             </div>
           </section>
+
+          {/* Alifers handoff */}
+          <div className="lg:col-span-3">
+            <AlifersHandoff />
+          </div>
         </div>
       </div>
     </main>

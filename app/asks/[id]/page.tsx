@@ -83,6 +83,16 @@ export default async function AskDetail({
                 )}
                 {audienceLabel(ask.audience)}
               </span>
+              {typeof ask.est_minutes === "number" && (
+                <span className="inline-flex items-center rounded-full border border-paper-line bg-paper-warm px-2 py-0.5 text-[10px] font-medium text-ink-soft">
+                  ~{ask.est_minutes} min
+                </span>
+              )}
+              {ask.deadline && (
+                <span className="inline-flex items-center rounded-full border border-gold-100 bg-gold-50 px-2 py-0.5 text-[10px] font-medium text-gold-600">
+                  by {new Date(ask.deadline).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })}
+                </span>
+              )}
             </div>
 
             <h1 className="mt-4 font-display text-2xl font-semibold leading-snug tracking-tight text-ink">
@@ -93,6 +103,10 @@ export default async function AskDetail({
                 {ask.body}
               </p>
             )}
+
+            {/* Type-specific preview placeholder (swap with a real screenshot later) */}
+            {ask.kind === "website_roast" && <WebsitePreviewPlaceholder />}
+            {ask.kind === "review_post" && <LinkedInPreviewPlaceholder />}
 
             {ask.author && (
               <div className="mt-5 flex items-center gap-2 border-t border-paper-line pt-4 text-[13px]">
@@ -124,5 +138,58 @@ export default async function AskDetail({
         </div>
       </div>
     </main>
+  );
+}
+
+/* ---------- preview placeholders (demo-quality, replace with real screenshots) ---------- */
+
+function WebsitePreviewPlaceholder() {
+  return (
+    <div className="mt-5 overflow-hidden rounded-xl border border-paper-line bg-paper-warm/40">
+      {/* Faux browser chrome */}
+      <div className="flex items-center gap-1.5 border-b border-paper-line bg-paper px-3 py-2">
+        <span className="h-2 w-2 rounded-full bg-paper-line" />
+        <span className="h-2 w-2 rounded-full bg-paper-line" />
+        <span className="h-2 w-2 rounded-full bg-paper-line" />
+        <span className="ml-3 truncate text-[11px] text-ink-muted">
+          your-prototype.com
+        </span>
+      </div>
+      <div className="flex aspect-[16/9] items-center justify-center bg-paper-warm">
+        <div className="text-center">
+          <div className="font-display text-xs uppercase tracking-[0.18em] text-ink-muted">
+            Site preview
+          </div>
+          <div className="mt-1 text-[11px] text-ink-muted/80">
+            Screenshot drops in here when ready
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LinkedInPreviewPlaceholder() {
+  return (
+    <div className="mt-5 overflow-hidden rounded-xl border border-paper-line bg-paper-warm/40">
+      <div className="flex aspect-[1.91/1] items-center justify-center bg-paper-warm">
+        <div className="text-center">
+          <div className="font-display text-xs uppercase tracking-[0.18em] text-ink-muted">
+            Post preview
+          </div>
+          <div className="mt-1 text-[11px] text-ink-muted/80">
+            Draft attaches here for review
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-paper-line bg-paper px-3 py-2">
+        <div className="text-[11px] uppercase tracking-[0.16em] text-ink-muted">
+          linkedin.com
+        </div>
+        <div className="mt-0.5 truncate text-[12px] font-medium text-ink">
+          Draft: a prototype I&rsquo;ve been quietly shipping
+        </div>
+      </div>
+    </div>
   );
 }

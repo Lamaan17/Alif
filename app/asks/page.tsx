@@ -44,7 +44,7 @@ export default async function AsksPage() {
             </h1>
             <p className="lead mt-2 text-sm">
               Website roasts, pitch feedback, MVP testers, intros. Offer help
-              where you can — it&rsquo;s how trust gets built.
+              where you can — you unlock the network by showing up.
             </p>
           </div>
           {canPost ? (

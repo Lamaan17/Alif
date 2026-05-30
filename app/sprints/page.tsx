@@ -41,8 +41,8 @@ export default async function SprintsPage() {
             Seven days. One build. Real feedback.
           </h1>
           <p className="lead mt-3 text-sm">
-            Sprints are lightweight rooms where ALIF builders test momentum by
-            shipping something useful together.
+            Time-bound rituals where ALIF builders collaborate and create
+            momentum — shipping something useful together in a single week.
           </p>
         </div>
 

@@ -157,32 +157,49 @@ export function meetsAudience(
 }
 
 export const ASK_KINDS = [
-  { value: "general",         label: "General" },
-  { value: "website_roast",   label: "Website roast" },
+  { value: "website_roast",   label: "Roast my website" },
+  { value: "review_post",     label: "Review my post" },
+  { value: "idea_feedback",   label: "Idea feedback" },
   { value: "pitch_feedback",  label: "Pitch feedback" },
   { value: "mvp_testing",     label: "MVP testing" },
+  { value: "find_users",      label: "Find early users" },
+  { value: "design_help",     label: "Design help" },
+  { value: "code_help",       label: "Code help" },
+  { value: "pricing_check",   label: "Pricing check" },
   { value: "intro",           label: "Intro request" },
   { value: "feedback",        label: "Feedback" },
+  { value: "general",         label: "General" },
 ] as const;
 
+// Canonical participation-badge family (11). Order is display order on
+// admin pickers, profile pages, etc.
+//
+// Note: badges are *participation/trust signals only*. They do NOT control
+// what someone can do — that's the access ladder (LEVELS / tierName).
 export const BADGES = [
-  // Trust signals
-  { value: "alif_verified",          label: "Verified Builder",       tone: "moss" },
-  { value: "sprint_finisher",        label: "Sprint Finisher",        tone: "moss" },
-  { value: "shipped_project",        label: "Project Shipped",        tone: "moss" },
-  { value: "mentor_endorsed",        label: "Mentor Endorsed",        tone: "gold" },
-  { value: "active_collaborator",    label: "Active Builder",         tone: "ink"  },
-  // ALIF Passport
-  { value: "sessions_participant",   label: "Sessions Participant",   tone: "gold" },
-  { value: "network_member",         label: "Network Member",         tone: "moss" },
-  { value: "hq_visitor",             label: "HQ Visitor",             tone: "ink"  },
-  { value: "jumuah_attendee",        label: "Jumuah Attendee",        tone: "gold" },
-  { value: "summit_participant",     label: "Summit Participant",     tone: "gold" },
-  { value: "tournament_builder",     label: "Tournament Builder",     tone: "moss" },
-  { value: "portfolio_contributor",  label: "Portfolio Contributor",  tone: "gold" },
-  // Legacy / community
-  { value: "event_attendee",         label: "ALIF Event Attendee",    tone: "ink"  },
-  { value: "cohort_member",          label: "Cohort Member",          tone: "gold" },
+  { value: "sessions_participant",     label: "Sessions Alumni",          tone: "gold" },
+  { value: "alifers_member",           label: "Alifers Member",           tone: "moss" },
+  { value: "hq_visitor",               label: "HQ Regular",               tone: "ink"  },
+  { value: "sprint_finisher",          label: "Sprint Finisher",          tone: "moss" },
+  { value: "event_attendee",           label: "Event Attendee",           tone: "ink"  },
+  { value: "mvp_tester",               label: "MVP Tester",               tone: "moss" },
+  { value: "website_roasted",          label: "Website Roasted",          tone: "gold" },
+  { value: "community_ask_answered",   label: "Community Ask Answered",   tone: "moss" },
+  { value: "project_helper",           label: "Project Helper",           tone: "moss" },
+  { value: "mentor_endorsed",          label: "Mentor Endorsed",          tone: "gold" },
+  { value: "build_sprint_host",        label: "Build Sprint Host",        tone: "gold" },
+  // Legacy kinds — still in the enum, kept available so existing seed data
+  // and historical assignments render correctly. Hidden from new admin
+  // picker order but BadgeChip handles them via the icon map.
+  { value: "alif_verified",            label: "Verified Builder (legacy)",tone: "moss" },
+  { value: "shipped_project",          label: "Project Shipped",          tone: "moss" },
+  { value: "active_collaborator",      label: "Active Builder",           tone: "ink"  },
+  { value: "network_member",           label: "Network Member",           tone: "moss" },
+  { value: "jumuah_attendee",          label: "Jumuah Attendee",          tone: "gold" },
+  { value: "summit_participant",       label: "Summit Participant",       tone: "gold" },
+  { value: "tournament_builder",       label: "Tournament Builder",       tone: "moss" },
+  { value: "portfolio_contributor",    label: "Portfolio Contributor",    tone: "gold" },
+  { value: "cohort_member",            label: "Cohort Member",            tone: "gold" },
 ] as const;
 
 export type BadgeKind = (typeof BADGES)[number]["value"];
