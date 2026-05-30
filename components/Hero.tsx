@@ -11,7 +11,18 @@ export default function Hero() {
 
       <div className="container-prose pt-28 pb-28 sm:pt-36 md:pt-40">
         <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
-          <span className="eyebrow">
+          <a
+            href="/login"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-paper-line bg-paper-warm/60 px-3 py-1 text-[11px] font-medium text-ink-muted transition-colors hover:border-ink/20 hover:bg-paper-warm hover:text-ink"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-ink" />
+            Coming from Alifers?
+            <span className="text-ink-muted/70 transition-colors group-hover:text-ink">
+              Continue here →
+            </span>
+          </a>
+
+          <span className="eyebrow mt-4">
             <span className="eyebrow-dot" />
             The continuity layer for ALIF builders
           </span>
