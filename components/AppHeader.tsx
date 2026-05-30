@@ -76,9 +76,6 @@ export async function AppHeader({ email }: { email?: string | null }) {
           <NavLink href="/community" icon={Globe}>
             Community
           </NavLink>
-          <NavLink href="/map" icon={MapPin}>
-            Map
-          </NavLink>
           <NavLink href="/pulse" icon={Activity}>
             Pulse
           </NavLink>

@@ -30,7 +30,7 @@ export default async function MapPreview() {
             </p>
           </div>
           <Link
-            href="/map"
+            href="/pulse#map"
             className="btn-secondary self-start lg:self-end"
           >
             Open the map

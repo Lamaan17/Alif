@@ -17,6 +17,8 @@ import { AppHeader } from "@/components/AppHeader";
 import { getPulseSnapshot } from "@/lib/data/pulse";
 import { Sparkline } from "@/components/charts/Sparkline";
 import { BarChart } from "@/components/charts/BarChart";
+import { CityMap } from "@/components/map/CityMap";
+import { getNetworkData } from "@/lib/data/network";
 
 export const metadata = { title: "This Week in ALIF — alif·build" };
 
@@ -27,7 +29,10 @@ export default async function PulsePage() {
   } = await supabase.auth.getUser();
   if (!user) redirect("/login?next=/pulse");
 
-  const s = await getPulseSnapshot();
+  const [s, network] = await Promise.all([
+    getPulseSnapshot(),
+    getNetworkData(),
+  ]);
 
   // Recent shipped projects (from profiles with past_projects)
   const { data: shippers } = await supabase
@@ -250,14 +255,31 @@ export default async function PulsePage() {
           </ul>
         </section>
 
+        {/* Community Map (merged in from /map) */}
+        <section id="map" className="mt-20 scroll-mt-24">
+          <SectionTitle eyebrow="Community Map">
+            Where ALIF is happening.
+          </SectionTitle>
+          <p className="mt-2 max-w-2xl text-sm text-ink-muted">
+            Cities, rooms, projects, and builders carrying ALIF energy beyond
+            San Francisco. Drag the globe to rotate; click any city for who&rsquo;s
+            active there.
+          </p>
+          <div className="mt-6">
+            <CityMap cities={network.cities} />
+          </div>
+          <p className="mt-3 text-[11px] uppercase tracking-[0.16em] text-ink-muted">
+            {network.totalBuilders} builders · {network.cities.length} cities · most active in {network.mostActive.name}
+          </p>
+        </section>
+
         {/* Closing CTA */}
         <div className="mt-16 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link href="/map" className="btn-primary">
-            <MapPin className="h-4 w-4" />
-            See the Community Map
-          </Link>
-          <Link href="/builders" className="btn-secondary">
+          <Link href="/builders" className="btn-primary">
             Explore Builders
+          </Link>
+          <Link href="/community" className="btn-secondary">
+            How access works
           </Link>
         </div>
 

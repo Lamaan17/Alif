@@ -162,9 +162,26 @@ export default async function CommunityPage() {
           <AccessLadder level={level} isAdmin={isAdminViewer} />
         </div>
 
-        {/* Cards */}
-        <div className="mt-16">
-          <CommunityCards unlocked={unlocked} />
+        {/* Badges & participation surfaces */}
+        <div className="mt-20">
+          <div className="text-center">
+            <span className="eyebrow">
+              <span className="eyebrow-dot" />
+              Badges
+            </span>
+            <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+              Participation, not permission.
+            </h2>
+            <p className="lead mx-auto mt-3 max-w-2xl text-sm">
+              Badges show <em className="italic font-medium text-ink">where you&rsquo;ve shown up</em> and{" "}
+              <em className="italic font-medium text-ink">what you&rsquo;ve helped with</em>. They&rsquo;re context and trust signals
+              — distinct from the access ladder above, which controls what you
+              can do.
+            </p>
+          </div>
+          <div className="mt-10">
+            <CommunityCards unlocked={unlocked} />
+          </div>
         </div>
 
         {/* Access checklist */}
